@@ -2,7 +2,8 @@
 using namespace std;
 class Solution {
 public:
-    vector<int> spiralOrder(vector<vector<int>>& matrix) {
+    vector<int> spiralOrder
+    (vector<vector<int>>& matrix) {
         vector<int> ans;
         int m = matrix.size();
         int n = matrix[0].size();
