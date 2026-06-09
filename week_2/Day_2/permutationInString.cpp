@@ -1,31 +1,31 @@
 #include<bits/stdc++.h>
 using namespace std;
 class Solution {
-    public:
-    void recurPermut(vector<int> &ds,vector<int> &nums,int freq[],vector<vector<int>>&ans){
-        for(int i=0;i<nums.size();i++){
-            if(ds.size()==nums.size()){
-                ans.push_back(ds);
-                return ;
-            }
-            if(freq[i]==0){
-                ds.push_back(nums[i]);
-                freq[i]=1;
-                recurPermut(ds,nums,freq,ans);
-                freq[i]=0;
-                ds.pop_back();
-            }
-        }
-    }
 public:
-    vector<vector<int>> permute(vector<int>& nums) {
-        vector<vector<int>>ans;
-        vector<int>ds;
-        int freq[nums.size()];
-        for(int i=0;i<nums.size();i++){
-            freq[i]=0;
-            recurPermut(ds,nums,freq,ans);
+    bool checkInclusion(string s1, string s2) {
+        if(s1.size()>s2.size()){
+            return false;
         }
-        return ans;
+        unordered_map<char,int> mp1,mp2;
+        for(int i=0;i<s1.size();i++){
+            mp1[s1[i]]++;
+        }
+        int k=s1.size();
+        for(int i=0;i<k;i++){
+            mp2[s2[i]]++;
+        }
+        if(mp1==mp2) return true;
+        for(int i=k;i<s2.size();i++){
+            mp2[s2[i]]++;
+            mp2[s2[i-k]]--;
+        if(mp2[s2[i-k]]==0){
+            mp2.erase(s2[i-k]);
+        }
+        if(mp1==mp2){
+            return true;
+        }
+        }
+        
+        return false;
     }
 };
